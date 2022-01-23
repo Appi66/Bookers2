@@ -1,4 +1,13 @@
 <h1>User Info</h1>
+<% if @user.errors.any? %>
+ <%= pluralize(@user.errors.count, "error") %>  prohibited this obj from being saved:
+  <ul>
+   <% @user.errors.full_messages. each do |message| %>
+    <li><%= message %></li>
+   <% end %>
+  </ul>
+ <% end %>
+
 <%= form_with model: @user, local:true do |f| %>
  <p>Name</p>
  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder: "Name" %>

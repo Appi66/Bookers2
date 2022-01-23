@@ -20,14 +20,14 @@
         <div>
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
-              <li class="nav-item"><%= link_to users_path(current_user.id) do %><span class="text-light nav-link"><i class="fas fa-home"></i>Home</span><% end %></li>
+              <li class="nav-item"><%= link_to user_path(current_user.id) do %><span class="text-light nav-link"><i class="fas fa-home"></i>Home</span><% end %></li>
             　<li class="nav-item"><%= link_to users_path do %><span class="text-light nav-link"><i class="fas fa-users"></i>Users</span><% end %></li>
               <li class="nav-item"><%= link_to books_path do %><span class="text-light nav-link"><i class="fas fa-book-open"></i>Books</span><% end %></li>
               <li class="nav-item"><%= link_to destroy_user_session_path, method: :delete do %><span class="text-light nav-link"><i class="fas fa-sign-out-alt"></i>Log out</span><% end %></li>
             <% else %>
               <li class="nav-item"><%= link_to root_path do %><span class="text-light nav-link"><i class="fas fa-home"></i>Home</span><% end %></li>
               <li class="nav-item"><%= link_to about_path do %><span class="text-light nav-link"><i class="fas fa-link"></i>About</span><% end %></li>
-              <li class="nav-item"><%= link_to new_user_registration_path do %><span class="text-light nav-link"><i class="fas fa-user-plus"></i>Sign Up</span><% end %></li>
+              <li class="nav-item"><%= link_to new_user_registration_path do %><span class="text-light nav-link"><i class="fas fa-user-plus"></i>Sign up</span><% end %></li>
               <li class="nav-item"><%= link_to new_user_session_path do %><span class="text-light nav-link"><i class="fas fa-sign-in-alt"></i>Log in</span><% end %></li>
           　<% end %>
           </ul>
