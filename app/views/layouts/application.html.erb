@@ -5,45 +5,44 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <script src="https://kit.fontawesome.com/63d598b7fb.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-     <% if user_signed_in? %>
-       <li>
-         <%= link_to "Home", user_path(current_user) %>
-       </li>
-       <li>
-         <%= link_to "User", users_path %>
-       </li>
-       <li>
-         <%= link_to "Books", books_path %>
-       </li>
-       <li>
-         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-       </li>
-     <% else %>
-       <li>
-         <%= link_to "Home", root_path %>
-       </li>
-       <li>
-         <%= link_to "About", about_path %>
-       </li>
-       <li>
-         <%= link_to "Sign Up", new_user_registration_path %>
-       </li>
-       <li>
-         <%= link_to "Log in", new_user_session_path %>
-       </li>
-     <% end %>
-    </header>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand navbar-left" href="/"><span>Bookers</span></a>
+        <div>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li class="nav-item"><%= link_to users_path(current_user.id) do %><span class="text-light nav-link"><i class="fas fa-home"></i>Home</span><% end %></li>
+            　<li class="nav-item"><%= link_to users_path do %><span class="text-light nav-link"><i class="fas fa-users"></i>Users</span><% end %></li>
+              <li class="nav-item"><%= link_to books_path do %><span class="text-light nav-link"><i class="fas fa-book-open"></i>Books</span><% end %></li>
+              <li class="nav-item"><%= link_to destroy_user_session_path, method: :delete do %><span class="text-light nav-link"><i class="fas fa-sign-out-alt"></i>Log out</span><% end %></li>
+            <% else %>
+              <li class="nav-item"><%= link_to root_path do %><span class="text-light nav-link"><i class="fas fa-home"></i>Home</span><% end %></li>
+              <li class="nav-item"><%= link_to about_path do %><span class="text-light nav-link"><i class="fas fa-link"></i>About</span><% end %></li>
+              <li class="nav-item"><%= link_to new_user_registration_path do %><span class="text-light nav-link"><i class="fas fa-user-plus"></i>Sign Up</span><% end %></li>
+              <li class="nav-item"><%= link_to new_user_session_path do %><span class="text-light nav-link"><i class="fas fa-sign-in-alt"></i>Log in</span><% end %></li>
+          　<% end %>
+          </ul>
+      　</div>
+      </div>
+    </nav>
+  </header>
+
+
     <%= flash[:notice] %>
     <%= yield %>
     <footer>
         <p>CopyRight Infratop.inc</p>
+
+        <div><i class="bi bi-house"></i></div>
     </footer>
   </body>
 </html>
